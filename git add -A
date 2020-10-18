@@ -1,0 +1,35 @@
+[1mdiff --git a/src/main/java/com/uncc/ticket/controller/TicketController.java b/src/main/java/com/uncc/ticket/controller/TicketController.java[m
+[1mindex ca12794..6bc2903 100644[m
+[1m--- a/src/main/java/com/uncc/ticket/controller/TicketController.java[m
+[1m+++ b/src/main/java/com/uncc/ticket/controller/TicketController.java[m
+[36m@@ -53,12 +53,14 @@[m [mpublic class TicketController {[m
+     @RequestMapping(value = "/tickets/edit/{id}", method = RequestMethod.GET)[m
+     public String editTicket(Model model,@PathVariable("id") Long id) {[m
+         // Code here[m
+[31m-        return "redirect:/"; //Remove this line[m
+[32m+[m[32m        model.addAttribute("ticket", ticketService.findById(id));[m
+[32m+[m[32m        return "tickets/storeTicket";[m
+     }[m
+ [m
+     @RequestMapping(value = "/tickets/delete/{id}", method = RequestMethod.GET)[m
+     public String deleteTicket(@PathVariable("id") Long id) {[m
+         // Code here[m
+[32m+[m[32m        ticketService.deleteById(id);[m
+         return "redirect:/";[m
+     }[m
+ [m
+[1mdiff --git a/src/main/resources/application.properties b/src/main/resources/application.properties[m
+[1mindex a9104f6..6401a9a 100644[m
+[1m--- a/src/main/resources/application.properties[m
+[1m+++ b/src/main/resources/application.properties[m
+[36m@@ -1,8 +1,8 @@[m
+ server.port=8085[m
+ [m
+ spring.datasource.url=jdbc:mysql://localhost:3306/ticket[m
+[31m-spring.datasource.username=root[m
+[31m-spring.datasource.password=root [m
+[32m+[m[32mspring.datasource.username=vonknngn[m
+[32m+[m[32mspring.datasource.password=Kn569362#@![m
+ # Enter your own password above[m
+ [m
+ spring.jpa.hibernate.ddl-auto=update[m
