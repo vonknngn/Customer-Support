@@ -50,18 +50,6 @@ public class TicketController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/tickets/edit/{id}", method = RequestMethod.GET)
-    public String editTicket(Model model,@PathVariable("id") Long id) {
-        // Code here
-        model.addAttribute("ticket", ticketService.findById(id));
-        return "tickets/storeTicket";
-    }
-
-    @RequestMapping(value = "/tickets/delete/{id}", method = RequestMethod.GET)
-    public String deleteTicket(@PathVariable("id") Long id) {
-        // Code here
-        ticketService.deleteById(id);
-        return "redirect:/";
-    }
+    
 
 }
